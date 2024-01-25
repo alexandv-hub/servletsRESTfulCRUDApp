@@ -30,12 +30,11 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 import java.io.InputStream;
 import java.util.Optional;
 
-import static com.servletsRESTfulCRUDApp.config.DBConnection.getProperties;
 import static com.servletsRESTfulCRUDApp.repository.impl.FileStorageRepositoryImpl.PROPERTY_FILE_STORAGE_DIR;
 import static com.servletsRESTfulCRUDApp.view.messages.ErrorMessages.ERR_500_INTERNAL_SERVER_ERROR;
 import static com.servletsRESTfulCRUDApp.view.messages.ErrorMessages.Entity.ERR_USER_NOT_FOUND;
 import static com.servletsRESTfulCRUDApp.view.messages.InfoMessages.Entity.INFO_FILE_UPLOADED;
-import static com.servletsRESTfulCRUDApp.view.messages.InfoMessages.FileStorage.INFO_FILE_DOWNLOADED_SUCCESSFULLY;
+import static com.servletsRESTfulCRUDApp.view.messages.InfoMessages.FileStorage.*;
 import static jakarta.ws.rs.core.Response.Status.INTERNAL_SERVER_ERROR;
 
 @Slf4j
@@ -98,9 +97,9 @@ public class FileStorageServletRestController {
 
             fileStorageService.uploadUserFileToStorage(inputStream, fileName);
 
-            log.info("Starting to save file-repository's event entity...");
+            log.info(INFO_STARTING_TO_SAVE_FILE_REPOSITORY_S_EVENT_ENTITY);
             eventService.save(event);
-            log.info("file-repository's event entity saved successfully.");
+            log.info(INFO_FILE_REPOSITORY_S_EVENT_ENTITY_SAVED_SUCCESSFULLY);
 
             return Response.status(Response.Status.CREATED).entity(event).build();
         } catch (Exception e) {

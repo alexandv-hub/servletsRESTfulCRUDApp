@@ -43,5 +43,7 @@ public final class InfoMessages {
         public static final String INFO_UPLOADING_USER_FILE_TO_FILE_STORAGE_FINISHED_SUCCESSFULLY = "Uploading user file to file storage finished successfully.";
         public static final String INFO_STARTING_TO_DOWNLOAD_USER_FILE_FROM_FILE_STORAGE = "Starting to download user file from file storage...";
         public static final String INFO_FILE_DOWNLOADED_SUCCESSFULLY = "File downloaded from file storage successfully";
+        public static final String INFO_STARTING_TO_SAVE_FILE_REPOSITORY_S_EVENT_ENTITY = "Starting to save file-repository's event entity...";
+        public static final String INFO_FILE_REPOSITORY_S_EVENT_ENTITY_SAVED_SUCCESSFULLY = "file-repository's event entity saved successfully.";
     }
 }
