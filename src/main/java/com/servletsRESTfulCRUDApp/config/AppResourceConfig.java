@@ -6,6 +6,7 @@ import com.servletsRESTfulCRUDApp.controller.FileStorageServletRestController;
 import com.servletsRESTfulCRUDApp.controller.UserServletRestController;
 import com.servletsRESTfulCRUDApp.json.GsonMessageBodyHandler;
 import com.servletsRESTfulCRUDApp.json.GsonMessageBodyReader;
+import com.servletsRESTfulCRUDApp.json.GsonUserSerializerAdapter;
 import io.swagger.v3.jaxrs2.integration.resources.OpenApiResource;
 import jakarta.ws.rs.ApplicationPath;
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
@@ -27,6 +28,7 @@ public class AppResourceConfig extends ResourceConfig {
         // Json handlers
         register(GsonMessageBodyHandler.class);
         register(GsonMessageBodyReader.class);
+        register(GsonUserSerializerAdapter.class);
 
         // OpenApi and Swagger
         initOpenApiSwaggerWithJersey();
