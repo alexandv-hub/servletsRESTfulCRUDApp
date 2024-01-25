@@ -23,8 +23,7 @@ public class Event implements DBEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-        @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST},
-                fetch = FetchType.LAZY)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST}, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 

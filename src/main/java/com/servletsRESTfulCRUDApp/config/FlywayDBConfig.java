@@ -22,13 +22,13 @@ public class FlywayDBConfig {
 
         try {
             Properties dbConnectionProperties = getProperties();
-            String serverUrl = dbConnectionProperties.getProperty(PROPERTY_NAME_DATABASE_URL)
-                                + dbConnectionProperties.getProperty(PROPERTY_NAME_DATABASE_NAME);
+            String serverUrl = dbConnectionProperties.getProperty(PROPERTY_DATABASE_URL)
+                                + dbConnectionProperties.getProperty(PROPERTY_DATABASE_NAME);
 
             Flyway flyway = Flyway.configure().dataSource(
                             serverUrl,
-                            dbConnectionProperties.getProperty(PROPERTY_NAME_DATABASE_USER),
-                            dbConnectionProperties.getProperty(PROPERTY_NAME_DATABASE_PASSWORD))
+                            dbConnectionProperties.getProperty(PROPERTY_DATABASE_USER),
+                            dbConnectionProperties.getProperty(PROPERTY_DATABASE_PASSWORD))
                     .load();
 
             flyway.migrate();

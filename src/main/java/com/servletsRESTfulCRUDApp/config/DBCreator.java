@@ -41,7 +41,7 @@ public class DBCreator {
             ResultSet resultSet = statement.executeQuery(SQL_SHOW_DATABASES);
             boolean dbExists = false;
             while (resultSet.next()) {
-                if (dbConnectionProperties.getProperty(PROPERTY_NAME_DATABASE_NAME).equals(resultSet.getString(1))) {
+                if (dbConnectionProperties.getProperty(PROPERTY_DATABASE_NAME).equals(resultSet.getString(1))) {
                     dbExists = true;
                     log.info(INFO_CONNECTED_TO_MYSQL_SERVER_SUCCESSFULLY);
                     break;
@@ -51,7 +51,7 @@ public class DBCreator {
             if (!dbExists) {
                 log.error(ERR_NO_DATABASE_FOUND);
                 log.info(INFO_STARTING_CREATE_NEW_DATABASE);
-                statement.executeUpdate(SQL_CREATE_DATABASE + dbConnectionProperties.getProperty(PROPERTY_NAME_DATABASE_NAME));
+                statement.executeUpdate(SQL_CREATE_DATABASE + dbConnectionProperties.getProperty(PROPERTY_DATABASE_NAME));
                 log.info(INFO_DATABASE_SUCCESSFULLY_CREATED);
             }
         } catch (Exception e) {

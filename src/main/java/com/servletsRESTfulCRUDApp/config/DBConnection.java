@@ -16,10 +16,10 @@ public class DBConnection {
 
     static final String APPLICATION_PROPERTIES_FILE_NAME = "application.properties";
 
-    static final String PROPERTY_NAME_DATABASE_URL = "database.url";
-    static final String PROPERTY_NAME_DATABASE_NAME = "database.name";
-    static final String PROPERTY_NAME_DATABASE_USER = "database.user";
-    static final String PROPERTY_NAME_DATABASE_PASSWORD = "database.password";
+    static final String PROPERTY_DATABASE_URL = "database.url";
+    static final String PROPERTY_DATABASE_NAME = "database.name";
+    static final String PROPERTY_DATABASE_USER = "database.user";
+    static final String PROPERTY_DATABASE_PASSWORD = "database.password";
 
     static {
         properties = loadProperties(APPLICATION_PROPERTIES_FILE_NAME);
@@ -30,11 +30,11 @@ public class DBConnection {
 
     static synchronized Connection getServerConnection() throws SQLException {
         try {
-            String serverUrl = properties.getProperty(PROPERTY_NAME_DATABASE_URL);
+            String serverUrl = properties.getProperty(PROPERTY_DATABASE_URL);
             return DriverManager.getConnection(
                     serverUrl,
-                    properties.getProperty(PROPERTY_NAME_DATABASE_USER),
-                    properties.getProperty(PROPERTY_NAME_DATABASE_PASSWORD));
+                    properties.getProperty(PROPERTY_DATABASE_USER),
+                    properties.getProperty(PROPERTY_DATABASE_PASSWORD));
         } catch (Exception e) {
             log.error(ERR_DB_CONNECTION_FAILED);
             throw e;
