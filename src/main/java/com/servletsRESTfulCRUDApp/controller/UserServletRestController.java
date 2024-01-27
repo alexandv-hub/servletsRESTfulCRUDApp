@@ -50,8 +50,8 @@ public class UserServletRestController {
             content = @Content(schema = @Schema(implementation = User.class)))
     public Response createUser(User newUser) {
         try {
-            service.save(newUser);
-            return Response.status(Response.Status.CREATED).entity(newUser).build();
+            User savedUser = service.save(newUser).orElse(null);
+            return Response.status(Response.Status.CREATED).entity(savedUser).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }

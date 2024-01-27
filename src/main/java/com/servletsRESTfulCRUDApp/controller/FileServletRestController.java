@@ -54,8 +54,8 @@ public class FileServletRestController {
             content = @Content(schema = @Schema(implementation = File.class)))
     public Response createFile(File newFile) {
         try {
-            service.save(newFile);
-            return Response.status(Response.Status.CREATED).entity(newFile).build();
+            File savedFile = service.save(newFile).orElse(null);
+            return Response.status(Response.Status.CREATED).entity(savedFile).build();
         } catch (Exception e) {
             return Response.status(INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }

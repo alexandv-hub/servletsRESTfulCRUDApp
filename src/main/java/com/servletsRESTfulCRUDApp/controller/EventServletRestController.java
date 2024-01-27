@@ -51,8 +51,8 @@ public class EventServletRestController {
             content = @Content(schema = @Schema(implementation = Event.class)))
     public Response createEvent(Event newEvent) {
         try {
-            service.save(newEvent);
-            return Response.status(Response.Status.CREATED).entity(newEvent).build();
+            Event savedEvent = service.save(newEvent).orElse(null);
+            return Response.status(Response.Status.CREATED).entity(savedEvent).build();
         } catch (Exception e) {
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }

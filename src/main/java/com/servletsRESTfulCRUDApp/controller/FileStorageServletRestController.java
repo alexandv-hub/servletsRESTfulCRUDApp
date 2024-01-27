@@ -78,30 +78,16 @@ public class FileStorageServletRestController {
                 return Response.status(Response.Status.NOT_FOUND).entity(ERR_USER_NOT_FOUND).build();
             }
 
-            String userName = optionalUser.get().getName();
-            User user = User.builder()
-                    .id(userId)
-                    .name(userName)
-                    .build();
-
             String fileName = fileDetail.getFileName();
-            File file = File.builder()
-                    .name(fileName)
-                    .filePath(PROPERTY_FILE_STORAGE_DIR)
-                    .build();
-
-            Event event = Event.builder()
-                    .user(user)
-                    .file(file)
-                    .build();
-
             fileStorageService.uploadUserFileToStorage(inputStream, fileName);
 
             log.info(INFO_STARTING_TO_SAVE_FILE_REPOSITORY_S_EVENT_ENTITY);
-            eventService.save(event);
+            User existingUser = optionalUser.get();
+            Event event = eventService.prepareNewEntity(existingUser, fileName);
+            Event savedEvent = eventService.save(event).orElse(null);
             log.info(INFO_FILE_REPOSITORY_S_EVENT_ENTITY_SAVED_SUCCESSFULLY);
 
-            return Response.status(Response.Status.CREATED).entity(event).build();
+            return Response.status(Response.Status.CREATED).entity(savedEvent).build();
         } catch (Exception e) {
             return Response.status(INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
         }
