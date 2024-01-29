@@ -14,7 +14,7 @@ import org.glassfish.jersey.server.ResourceConfig;
 
 import static com.servletsRESTfulCRUDApp.config.OpenApiSwaggerConfig.initOpenApiSwaggerWithJersey;
 
-@ApplicationPath("/rest/api")
+@ApplicationPath("/rest/api/v1")
 public class AppResourceConfig extends ResourceConfig {
 
     public AppResourceConfig() {

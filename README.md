@@ -41,7 +41,7 @@
    Перейдите в директорию bin вашего установленного Tomcat. Например: cd /opt/tomcat/bin.
    Запустите startup.sh командой ./startup.sh.
 8. Приложение теперь должно быть доступно по соответствующим URL.
-9. OPEN API спецификация доступна по адресу http://localhost:8080/servletsRESTfulCRUDApp_war_exploded/api/openapi.json .
+9. OPEN API спецификация доступна по адресу http://localhost:8080/servletsRESTfulCRUDApp_war_exploded/api/v1/openapi.json .
 10. Swagger документация к REST API доступна по адресу http://localhost:8080/servletsRESTfulCRUDApp_war_exploded/swagger-ui/ .
 
 

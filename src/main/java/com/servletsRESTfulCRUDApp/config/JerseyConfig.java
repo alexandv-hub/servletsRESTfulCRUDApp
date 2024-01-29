@@ -15,7 +15,7 @@ public class JerseyConfig implements ServletContextListener {
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext ctx = sce.getServletContext();
         ServletRegistration.Dynamic registration = ctx.addServlet("Jersey Web Application", ServletContainer.class);
-        registration.addMapping("/api/*");
+        registration.addMapping("/api/v1/*");
         registration.setInitParameter(ServletProperties.JAXRS_APPLICATION_CLASS, AppResourceConfig.class.getName());
     }
 }
